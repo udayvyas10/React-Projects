@@ -6,8 +6,8 @@ import { Link, NavLink } from "react-router-dom";
 import { SignedOut, SignedIn, SignInButton, UserButton } from "@clerk/clerk-react";
 import { CgClose } from "react-icons/cg";
 
-const Navbar = ({location}) => {
-  const[openDropDown, setOpenDropDown] = useState(false)
+const Navbar = ({location, getLocation, openDropDown, setOpenDropDown}) => {
+  
   const toggleDropdown = () => {
     setOpenDropDown(!openDropDown)
   }
@@ -37,6 +37,7 @@ const Navbar = ({location}) => {
         {
           openDropDown ? <div className="w-[250px] h-max shadow-2xl z-50 bg-white fixed top-16 left-60 border-2 p-5 border-gray-100 rounded-md">
           <h1 className="font-semibold mb-4 text-xl flex justify-baseline">Change Location <span><CgClose onClick={toggleDropdown}/></span></h1>
+          <button onClick={getLocation} className="bg-red-500 text-white px-4 p-2 rounded-md cursor-pointer hover:bg-red-600">Detect my location</button>
           </div> : null
         }
 
